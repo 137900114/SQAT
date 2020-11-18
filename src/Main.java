@@ -1,4 +1,5 @@
 import java.io.CharArrayReader;
+import java.util.ArrayList;
 
 class Greeting{
 
@@ -28,33 +29,36 @@ class Greeting{
     public String greeting_A(String[] name){
         String result = "Hello,";
 
-        String upper = null;
-        String[] lower = null;
+        ArrayList<String> lower = new ArrayList<>();
         for(int i = 0;i != name.length;i++){
-            if(isAllUpperCase(name[i])){
-                upper = name[i];
-                lower = new String[name.length - 1];
-                int lower_index = 0;
-                for(int j = 0;j != name.length;j++){
-                    if(name[j] != upper){
-                        lower[lower_index++] = name[j];
-                    }
+            if(name[i].contains(",")){
+                String[] arr = name[i].split(",");
+                for(int j = 0;j != arr.length;j++){
+                    lower.add(arr[j].trim());
                 }
+            }else{
+                lower.add(name[i]);
             }
         }
 
-        if(upper == null){
-            lower = name;
+
+        String upper = null;
+        for(int i = 0;i != lower.size();i++) {
+            if (isAllUpperCase(lower.get(i))) {
+                upper = lower.get(i);
+                lower.remove(i);
+                break;
+            }
         }
 
-        if(lower.length == 2){
-            result =  "Hello, " + lower[0] + " and " + lower[1] + ".";
+        if(lower.size() == 2){
+            result =  "Hello, " + lower.get(0) + " and " + lower.get(1) + ".";
         }else {
 
-            for (int i = 0; i < lower.length - 1; i++) {
-                result += ' ' + lower[i] + ',';
+            for (int i = 0; i < lower.size() - 1; i++) {
+                result += ' ' + lower.get(i) + ',';
             }
-            result +=  " and "+ lower[lower.length - 1] + ".";
+            result +=  " and "+ lower.get(lower.size() - 1) + ".";
         }
         if(upper != null){
             result += " AND HELLO " + upper + "!";
