@@ -26,10 +26,19 @@ class Greeting{
     }
 
     public String greeting_A(String[] name){
+        String result = "Hello,";
+
         if(name.length == 2){
             return "Hello," + name[0] + " and " + name[1] + ".";
         }
-        return "";
+
+        for(int i = 0;i < name.length - 1;i++){
+            result += ' '+ name[i] + ',';
+        }
+
+        result +=  " and "+ name[name.length - 1] + ".";
+
+        return result;
     }
 
 }
