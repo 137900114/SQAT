@@ -20,9 +20,12 @@ public class GreetingTest {
         assertEquals("Hello,Dr.ASH.",test.greeting("Dr.ASH"));
 
         String[] stra = {"Jan","Jun"};
-        assertEquals("Hello,Jan and Jun.",test.greeting_A(stra));
+        assertEquals("Hello, Jan and Jun.",test.greeting_A(stra));
 
         String[] strb = {"Amy", "Brian", "Charlotte"};
         assertEquals("Hello, Amy, Brian, and Charlotte.",test.greeting_A(strb));
+
+        String[] strc = {"Amy","BRIAN","Charlotte"};
+        assertEquals("Hello, Amy and Charlotte. AND HELLO BRIAN!",test.greeting_A(strc));
     }
 }

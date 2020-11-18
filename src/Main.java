@@ -28,15 +28,37 @@ class Greeting{
     public String greeting_A(String[] name){
         String result = "Hello,";
 
-        if(name.length == 2){
-            return "Hello," + name[0] + " and " + name[1] + ".";
+        String upper = null;
+        String[] lower = null;
+        for(int i = 0;i != name.length;i++){
+            if(isAllUpperCase(name[i])){
+                upper = name[i];
+                lower = new String[name.length - 1];
+                int lower_index = 0;
+                for(int j = 0;j != name.length;j++){
+                    if(name[j] != upper){
+                        lower[lower_index++] = name[j];
+                    }
+                }
+            }
         }
 
-        for(int i = 0;i < name.length - 1;i++){
-            result += ' '+ name[i] + ',';
+        if(upper == null){
+            lower = name;
         }
 
-        result +=  " and "+ name[name.length - 1] + ".";
+        if(lower.length == 2){
+            result =  "Hello, " + lower[0] + " and " + lower[1] + ".";
+        }else {
+
+            for (int i = 0; i < lower.length - 1; i++) {
+                result += ' ' + lower[i] + ',';
+            }
+            result +=  " and "+ lower[lower.length - 1] + ".";
+        }
+        if(upper != null){
+            result += " AND HELLO " + upper + "!";
+        }
 
         return result;
     }
