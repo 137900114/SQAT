@@ -31,7 +31,9 @@ class Greeting{
 
         ArrayList<String> lower = new ArrayList<>();
         for(int i = 0;i != name.length;i++){
-            if(name[i].contains(",")){
+            if(name[i].charAt(0) == '\"' && name[i].charAt(name[i].length() - 1) == '\"'){
+                lower.add(name[i].replaceAll("\"",""));
+            }else if(name[i].contains(",")){
                 String[] arr = name[i].split(",");
                 for(int j = 0;j != arr.length;j++){
                     lower.add(arr[j].trim());

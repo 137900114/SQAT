@@ -31,6 +31,8 @@ public class GreetingTest {
         String[] strd = {"Bob", "Charlie, Dianne"};
         assertEquals("Hello, Bob, Charlie, and Dianne.",test.greeting_A(strd));
 
+        String[] stre = {"Bob", "\"Charlie, Dianne\""};
+        assertEquals("Hello, Bob and Charlie, Dianne.",test.greeting_A(stre));
 
     }
 }
