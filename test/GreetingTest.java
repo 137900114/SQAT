@@ -12,5 +12,8 @@ public class GreetingTest {
         assertEquals("Hello,UDK.",test.greeting("UDK"));
         assertEquals("Hello,FAQ.",test.greeting("FAQ"));
 
+        //if the string pass into greeting is null
+        assertEquals("Hello,my friend.",test.greeting(null));
+
     }
 }
