@@ -18,5 +18,8 @@ public class GreetingTest {
 
         assertEquals("HELLO JERRY!",test.greeting("JERRY"));
         assertEquals("Hello,Dr.ASH.",test.greeting("Dr.ASH"));
+
+        String[] stra = {"Jan","Jun"};
+        assertEquals("Hello,Jan and Jun.",test.greeting_A(stra));
     }
 }
